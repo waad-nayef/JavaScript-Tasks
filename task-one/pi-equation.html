@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PI Constant</title>
+</head>
+
+<body>
+    <h1 id="output"></h1>
+
+</body>
+<script>
+    let radius = +prompt("Enter the radius of the sphere");
+    const PI = 3.14159265;
+    let outputElement = document.getElementById("output");
+    outputElement.textContent = `The volume of sphere with a radius of ${radius} is ${PI * radius ** 3 * (4 / 3)}`;
+
+</script>
+
+</html>
