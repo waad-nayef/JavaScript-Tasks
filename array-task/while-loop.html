@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while loop</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //q 13
+    function sumArray(array) {
+        let counter = 0;
+        let sum = 0
+        while (counter < array.length) {
+            sum += array[counter];
+            counter++;
+        }
+        return sum;
+    }
+
+    var nums = [1, 2, 3, 8, 9];
+    document.write(sumArray(nums) + "<br>");
+    document.write(sumArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) + "<br>");
+
+
+    // 14
+    function minInArray(array) {
+        let min = array[0];
+        let counter = 0;
+        while (counter < array.length) {
+            if (array[counter] < min)
+                min = array[counter];
+            counter++;
+        }
+        return min;
+    }
+    document.write(minInArray(nums) + "<br>");
+    document.write(minInArray([2, 3, 4, 5, 6, 7, 8, 9, 10]) + "<br>");
+
+    //15
+    function removeFromArray(array, element) {
+        let newArr = [];
+        let counter = 0;
+        while (counter < array.length) {
+            if (array[counter] != element)
+                newArr.push(array[counter]);
+            counter++;
+        }
+        return newArr;
+    }
+    document.write(removeFromArray(nums, 9) + "<br>");
+    document.write(removeFromArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10) + "<br>");
+
+    //16
+    function oddArray(array) {
+        let odd_array = [];
+        let counter = 0;
+        while (counter < array.length) {
+            if (array[counter] % 2 != 0) {
+                odd_array.push(array[counter]);
+            }
+            counter++;
+        }
+        return odd_array;
+    }
+    document.write(oddArray(nums) + "<br>");
+    document.write(oddArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) + "<br>");
+
+    //17
+    function aveArray(array) {
+        let sum = 0;
+        let counter = 0;
+        while (counter < array.length) {
+            sum += array[counter];
+            counter++;
+        }
+        return sum / array.length;
+    }
+    document.write(aveArray(nums) + "<br>");
+    document.write(aveArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) + "<br>");
+
+    //18
+    function shorterInArray(array) {
+        let shortestStr = array[0];
+        let length = array[0].length;
+        let counter = 0;
+        while (counter < array.length) {
+            if (array[counter].length < length) {
+                shortestStr = array[counter];
+                length = array[counter].length;
+            }
+            counter++;
+        }
+        return shortestStr;
+    }
+    var strings = ["alex", "mercer", "madrasa", "rashed2", "emad", "hala"]
+    document.write(shorterInArray(strings) + "<br>");
+    document.write(shorterInArray(["chevy", "nissan gtr 34", "mazda miata 97", "ford"]) + "<br>");
+
+
+    //19
+    function repeatChar(str, char) {
+        let counter = 0;
+        let itr = 0;
+        while (itr < str.length) {
+            if (str[itr] == char)
+                counter++;
+            itr++;
+        }
+        return counter;
+    }
+
+    let string = "alex mercer madrasa rashed2 emad hala"
+    document.write(repeatChar(string, "a") + "<br>");
+    document.write(repeatChar(string, "z") + "<br>");
+
+    //20
+    function evenIndexOddLength(array) {
+        let newArr = [];
+        let counter = 0;
+        while (counter < array.length) {
+            if (array[counter].length % 2 == 1 && counter % 2 == 0)
+                newArr.push(array[counter]);
+            counter++;
+        }
+        return newArr;
+    }
+    var strings = ["alex", "mercer", "madrasa", "rashed2", "emad", "hala"];
+    document.write(evenIndexOddLength(strings) + "<br>");
+
+    //21
+    function powerElementIndex(array) {
+        let counter = 0;
+        while (counter < array.length) {
+            array[counter] = array[counter] ** counter;
+            counter++;
+        }
+        return array;
+    }
+    var nums = [44, 5, 4, 3, 2, 10]
+    document.write(powerElementIndex(nums) + "<br>");
+
+    //22
+    function evenNumberEvenIndex(array) {
+        let newArr = [];
+        let counter = 0;
+        while (counter< array.length) {
+            if (counter % 2 == 0 && array[counter] % 2 == 0) {
+                newArr.push(array[counter]);
+            }
+            counter++;
+        }
+        return newArr;
+    }
+    nums = [5, 2, 2, 1, 8, 66, 55, 77, 34, 9, 55, 1];
+    document.write(evenNumberEvenIndex(nums) + "<br>");
+
+
+</script>
+
+</html>
