@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGEX</title>
+    <style>
+        * {
+            font-family: sans-serif;
+            font-size: 14px;
+            color: green;
+        }
+
+        .sign-in-form {
+            width: fit-content;
+            padding: 20px;
+            border: 1.5px seagreen solid;
+            border-radius: 15px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        body {
+            background-color: gainsboro;
+        }
+
+        input {
+            border-radius: 5px;
+            padding: 5px;
+            border: none;
+            outline: none;
+        }
+
+        input:focus {
+            background: rgb(201, 232, 201);
+            border: solid 1px seagreen;
+        }
+
+        .input-field {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 5px;
+            position: relative;
+        }
+
+        #tooltip-fn,
+        #tooltip-ln,
+        #tooltip-bd,
+        #tooltip-email,
+        #tooltip-cemail,
+        #tooltip-password,
+        #tooltip-cpassword,
+        #tooltip-num {
+            bottom: -10px;
+            right: -150px;
+            position: absolute;
+            background: rgb(235, 98, 98);
+            color: whitesmoke;
+            padding: 5px 5px;
+            border-radius: 0px 10px 10px 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form class="sign-in-form">
+        <div class="input-field">
+            <label for="first-name">First Name </label><input type="text" id="first-name">
+            <div id="tooltip-fn">your name should be letters only</div>
+        </div>
+        <div class="input-field">
+            <label for="last-name">Last Name </label><input type="text" id="last-name">
+            <div id="tooltip-ln">your name should be letters only</div>
+        </div>
+        <div class="input-field">
+            <label for="birthdate">Birthdate </label><input type="text" id="birthdate">
+            <div id="tooltip-bd">enter valid birthdate (dd-mm-yyyy)</div>
+
+        </div>
+        <div class="input-field">
+            <label for="email">Email </label><input type="text" id="email">
+            <div id="tooltip-email">enter valid email</div>
+        </div>
+        <div class="input-field">
+            <label for="confirm-email">Confirm Email </label><input type="text" id="confirm-email">
+            <div id="tooltip-cemail">The emails are not matched</div>
+        </div>
+        <div class="input-field">
+            <label for="password">Password </label><input type="text" id="password">
+            <div id="tooltip-password">enter valid password</div>
+        </div>
+        <div class="input-field">
+            <label for="confirm-password">Confirm Password </label><input type="text" id="confirm-password">
+            <div id="tooltip-cpassword">The passwords are not matched</div>
+
+        </div>
+        <div class="input-field">
+            <label for="mobile-number">Mobile Number </label><input type="text" id="mobile-number">
+            <div id="tooltip-num">enter valid number</div>
+        </div>
+        <input type="button" value="Sign in" id="sign-in">
+    </form>
+</body>
+
+<script>
+    let allow_sign_in = false;
+
+    let first_name = document.getElementById("first-name");
+    first_name.onchange = function () {
+        handleInput(first_name, "tooltip-fn", validName);
+    }
+
+    let last_name = document.getElementById("last-name");
+    last_name.onchange = function () {
+        handleInput(last_name, "tooltip-ln", validName);
+    }
+
+    let birthdate = document.getElementById("birthdate");
+    birthdate.onchange = function () {
+        handleInput(birthdate, "tooltip-bd", validBirthDate);
+    }
+
+    let email = document.getElementById("email");
+    email.onchange = function () {
+        handleInput(email, "tooltip-email", validEmail);
+    }
+
+    let cemail = document.getElementById("confirm-email");
+    cemail.onchange = function () {
+        handleConfirmation(email, cemail, "tooltip-cemail");
+    }
+
+    let password = document.getElementById("password");
+    password.onchange = function () {
+        handleInput(password, "tooltip-password", validPassword);
+    }
+
+    let cpassowrd = document.getElementById("confirm-password");
+    cpassowrd.onchange = function () {
+        handleConfirmation(password, cpassowrd, "tooltip-cpassword");
+    }
+
+    let number = document.getElementById("mobile-number");
+    number.onchange = function () {
+        handleInput(number, "tooltip-num", validMobileNumber);
+    }
+
+    function handleInput(input, tooltipId, validateFunction) {
+        let tooltip = document.getElementById(tooltipId);
+
+        if (!(validateFunction(input.value))) {
+            input.style.border = "2px solid red";
+            tooltip.style.display = "block";
+        }
+        else {
+            input.style.border = "none"
+            tooltip.style.display = "none";
+        }
+    }
+
+
+    function handleConfirmation(input, confirmInput, tooltipId) {
+        let tooltip = document.getElementById(tooltipId);
+
+        if (!(confirmation(input.value, confirmInput.value))) {
+            confirmInput.style.border = "2px solid red";
+            tooltip.style.display = "block";
+        }
+        else {
+            confirmInput.style.border = "none"
+            tooltip.style.display = "none";
+        }
+    }
+
+
+    function validName(name) {
+        return /^[A-Za-z]+$/i.test(name);
+
+    }
+
+    function validBirthDate(birthdate) {
+        return /^\d{1,2}([\/\\-])\d{1,2}\1\d{4}$/.test(birthdate);
+
+    }
+
+    function validEmail(email) {
+        return /^[\w.-]+@[a-z]+.[a-z]+$/i.test(email);
+    }
+
+    function validPassword(password) {
+        return /^[A-Z](?=.*\d.*\d)(?=.*[^A-Za-z0-9]).{7,31}$/.test(password);
+    }
+
+    function validMobileNumber(phone) {
+        return /^07[7-9]\d{7}$/.test(phone);
+    }
+
+
+    function confirmation(input, confirmedInput) {
+        return input == confirmedInput;
+    }
+
+</script>
+
+</html>
