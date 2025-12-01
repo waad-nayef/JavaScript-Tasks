@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>question 2</title>
+</head>
+
+<body>
+    <select name="" id="countries">
+        <option value="norway">Norway</option>
+        <option value="saudi">Saudi Arabia</option>
+        <option value="jordan">Jordan</option>
+        <option value="palestine">Palestine</option>
+    </select>
+    <br>
+    <br>
+    <img src="" alt="" id="display-flag" width="300px">
+</body>
+<script>
+    let selected = document.getElementById("countries");
+    let displayFlag = document.getElementById("display-flag");
+    selected.addEventListener("change", function () {
+        displayFlag.src = `images/${selected.value}.png`;
+    });
+</script>
+
+</html>

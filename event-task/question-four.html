@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>question 4</title>
+
+    <style>
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+        }
+
+        .paragraph {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            border: solid 1px black;
+        }
+
+        h2 {
+            display: inline;
+        }
+
+        .main-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            background: gainsboro;
+            padding: 10px;
+        }
+
+        .text {
+            color: gray;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="paragraph">
+            <div class="main-title">
+                <h2>What is lorem ipsum?</h2>
+                <a href="" id="show-paragraph-one">Show</a>
+            </div>
+            <div id="paragraph-one-text" class="text">Lorem Ipsum is dummy text used by designers and developers to fill
+                space in
+                a layout. It looks like normal text but has no real meaning. This helps people focus on how a page or
+                design looks without being distracted by actual content.
+                <br><br>
+                <a href="" id="hide-paragraph-one">Hide</a>
+            </div>
+        </div>
+
+        <div class="paragraph">
+            <div class="main-title">
+                <h2>Why do we use it?</h2>
+                <a href="" id="show-paragraph-two">Show</a>
+            </div>
+            <div id="paragraph-two-text" class="text">It is a long established fact that a reader will be distracted by
+                the readable
+                content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it
+                look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as
+                their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their
+                infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose
+                (injected humour and the like).
+                <br><br>
+                <a href="" id="hide-paragraph-two">Hide</a>
+            </div>
+        </div>
+
+        <div class="paragraph">
+            <div class="main-title">
+                <h2>Where does it come from?</h2>
+                <a href="" id="show-paragraph-three">Show</a>
+            </div>
+            <div id="paragraph-three-text" class="text">The term Lorem Ipsum refers to a scrambled, non-sensical Latin
+                text widely used
+                by designers and publishers as placeholder or dummy text. Its purpose is to allow a focus on the visual
+                layout and design of a document, typeface, or webpage without being distracted by meaningful content.
+                Originating from sections of the Roman philosopher Cicero's work De Finibus Bonorum et Malorum (written
+                in 45 BC), the text was first used in its scrambled form by an unknown printer in the 1500s to create
+                type specimen books. Today, it remains the standard tool in digital and print media for demonstrating
+                templates and prototypes before the final content is available.
+                <br><br>
+                <a href="" id="hide-paragraph-three">Hide</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let showP1 = document.getElementById("show-paragraph-one");
+    let hideP1 = document.getElementById("hide-paragraph-one");
+    let p1Text = document.getElementById("paragraph-one-text");
+
+    showP1.addEventListener("click", function (event) {
+        event.preventDefault();
+        showP1.style.display = "none";
+        p1Text.style.display = "block";
+    });
+
+    hideP1.addEventListener("click", function (event) {
+        event.preventDefault();
+        showP1.style.display = "block";
+        p1Text.style.display = "none";
+    });
+
+
+    let showP2 = document.getElementById("show-paragraph-two");
+    let hideP2 = document.getElementById("hide-paragraph-two");
+    let p2Text = document.getElementById("paragraph-two-text");
+
+    showP2.addEventListener("click", function (event) {
+        event.preventDefault();
+        showP2.style.display = "none";
+        p2Text.style.display = "block";
+    });
+
+    hideP2.addEventListener("click", function (event) {
+        event.preventDefault(); 
+        showP2.style.display = "block";
+        p2Text.style.display = "none";
+    });
+
+    let showP3 = document.getElementById("show-paragraph-three");
+    let hideP3 = document.getElementById("hide-paragraph-three");
+    let p3Text = document.getElementById("paragraph-three-text");
+
+    showP3.addEventListener("click", function (event) {
+        event.preventDefault();
+        showP3.style.display = "none";
+        p3Text.style.display = "block";
+    });
+
+    hideP3.addEventListener("click", function (event) {
+        event.preventDefault();
+        showP3.style.display = "block";
+        p3Text.style.display = "none";
+    });
+</script>
+
+</html>

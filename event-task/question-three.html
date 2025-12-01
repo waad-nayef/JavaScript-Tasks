@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>question 3</title>
+</head>
+
+<body>
+    <form action="">
+        <label>Password (min 6 characters): </label><input id="password-input" type="password" placeholder="password">
+        <span id="password-label"></span>
+
+        <br>
+
+        <label>Repeat Password: </label><input id="repeat-password" type="password" placeholder="password">
+        <span id="repeat-password-label"></span>
+
+        <br>
+
+        <input type="submit" value="Submit" id="submit" style="display: none;">
+    </form>
+</body>
+<script>
+    let passwordInput = document.getElementById("password-input");
+    let repeatPassword = document.getElementById("repeat-password");
+    let correctPass = false;
+    let correctConfirm = false;
+    let submitBtn = document.getElementById("submit");
+
+    passwordInput.addEventListener("change", function () {
+        let passwordLabel = document.getElementById("password-label");
+
+        if (passwordInput.value.length < 6) {
+            passwordLabel.style.color = "red";
+            passwordLabel.textContent = "Too short";
+        }
+        else {
+            passwordLabel.textContent = "";
+            correctPass = true;
+        }
+        if (correctPass && correctConfirm) {
+            submitBtn.style.display = "block";
+        }
+    });
+
+    repeatPassword.addEventListener("change", function () {
+        let repeatPasswordLabel = document.getElementById("repeat-password-label");
+
+        if (passwordInput.value != repeatPassword.value) {
+            repeatPasswordLabel.style.color = "red";
+            repeatPasswordLabel.textContent = "the two passwords don't match";
+        }
+        else {
+            repeatPasswordLabel.textContent = "";
+            correctConfirm = true;
+        }
+
+        if (correctPass && correctConfirm) {
+            submitBtn.style.display = "block";
+        }
+    });
+
+</script>
+
+</html>

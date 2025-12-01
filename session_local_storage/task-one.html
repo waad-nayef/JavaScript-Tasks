@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task one</title>
+</head>
+
+<body>
+
+    <form id="personalForm">
+        Name: <input type="text" id="name"><br>
+        Age: <input type="number" id="age"><br>
+        Gender:
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Male"> Male<br>
+        Description: <input type="text" id="description"><br>
+        Major & University: <input type="text" id="major"><br>
+        Programming Languages:<br>
+        <input type="checkbox" name="language" value="JavaScript"> JavaScript<br>
+        <input type="checkbox" name="language" value="Python"> Python<br>
+        <input type="checkbox" name="language" value="C++"> C++<br>
+        <input type="checkbox" name="language" value="Java"> Java<br>
+        <input type="checkbox" name="language" value="HTML"> HTML<br>
+        <button type="button" onclick="submitData()">Submit</button>
+    </form>
+
+    <div id="cards"></div>
+
+</body>
+
+<script>
+    function submitData() {
+        localStorage.setItem("name", document.getElementById("name").value);
+        localStorage.setItem("age", document.getElementById("age").value);
+        let gender = document.querySelector('input[name="gender"]:checked');
+        localStorage.setItem("gender", gender ? gender.value : "");
+        localStorage.setItem("description", document.getElementById("description").value);
+        localStorage.setItem("major", document.getElementById("major").value);
+
+        let checkboxes = document.querySelectorAll('input[name="language"]:checked');
+        let languages = "";
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (i > 0) languages += ", ";
+            languages += checkboxes[i].value;
+        }
+
+        localStorage.setItem("languages", languages.join(", "));
+
+        renderData();
+    }
+
+    function renderData() {
+        let name = localStorage.getItem("name");
+        let age = localStorage.getItem("age");
+        let gender = localStorage.getItem("gender");
+        let description = localStorage.getItem("description");
+        let major = localStorage.getItem("major");
+        let languages = localStorage.getItem("languages");
+
+        if (name) {
+            document.getElementById("cards").innerHTML = `
+            <div>
+                <h3>${name}</h3>
+                <p>Age: ${age}</p>
+                <p>Gender: ${gender}</p>
+                <p>Description: ${description}</p>
+                <p>Major & University: ${major}</p>
+                <p>Languages: ${languages}</p>
+            </div>
+        `;
+        }
+    }
+
+    renderData();
+</script>
+
+</html>

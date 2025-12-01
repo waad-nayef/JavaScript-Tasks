@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task three</title>
+</head>
+
+<body>
+    <h2>Registration Form</h2>
+    <form id="registerForm">
+        First Name: <input type="text" id="firstName"><br>
+        Last Name: <input type="text" id="lastName"><br>
+        Email: <input type="email" id="email"><br>
+        Password: <input type="password" id="password"><br>
+        <button type="button" onclick="register()">Register</button>
+    </form>
+
+    <h2>Login Form</h2>
+    <form id="loginForm">
+        Email: <input type="email" id="loginEmail"><br>
+        Password: <input type="password" id="loginPassword"><br>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <div id="loginMessage"></div>
+
+    <script>
+        function register() {
+            localStorage.setItem("firstName", document.getElementById("firstName").value);
+            localStorage.setItem("lastName", document.getElementById("lastName").value);
+            localStorage.setItem("email", document.getElementById("email").value);
+            localStorage.setItem("password", document.getElementById("password").value);
+        }
+
+        function login() {
+            let email = document.getElementById("loginEmail").value;
+            let password = document.getElementById("loginPassword").value;
+
+            let storedEmail = localStorage.getItem("email");
+            let storedPassword = localStorage.getItem("password");
+
+            if (email == storedEmail && password == storedPassword) {
+                document.getElementById("loginMessage").innerHTML = "Welcome " + localStorage.getItem("firstName") + " " + localStorage.getItem("lastName");
+            } else {
+                document.getElementById("loginMessage").innerHTML = "Email or Password is incorrect.";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

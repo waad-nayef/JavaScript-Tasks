@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print</title>
+</head>
+
+<body>
+    <form action="">
+        <label>Name: <input type="text" id="name"></label>
+        <label>Email: <input type="email" id="email"></label>
+        <label>Mobile: <input type="tel" id="mobile"></label>
+        <button id="print">Click On Me to Print</button>
+
+        <hr>
+        <div class="print-colored-data"></div>
+        <hr>
+        <table id="data-table" style="border:solid 1px black"></table>
+    </form>
+</body>
+<script>
+    let button = document.getElementById("print");
+    let outputDiv = document.querySelector(".print-colored-data");
+    let outputTable = document.getElementById("data-table");
+
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+        let nameText = document.getElementById("name").value;
+        let emailText = document.getElementById("email").value;
+        let mobileText = document.getElementById("mobile").value;
+
+        outputDiv.innerHTML = `
+            <mark style="background:green; padding: 2px;">${nameText}</mark>
+            <mark style="background:red; padding: 2px;">${emailText}</mark>
+            <mark style="background:yellow; padding: 2px;">${mobileText}</mark>
+        `;
+
+        let tableHTML = `
+                <tr><td style="border:solid 1px black">${nameText}</td><td style="border:solid 1px black">${emailText}</td><td style="border:solid 1px black">${mobileText}</td></tr>
+        `;
+        outputTable.innerHTML = tableHTML;
+    });
+</script>
+
+</html>

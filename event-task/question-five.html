@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>question 5</title>
+</head>
+
+<body>
+    <form action=""><select name="" id="font-type">
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Merriweather">Merriweather</option>
+        </select>
+        <input type="number" min="1" id="font-size">
+        <label>Italic <input type="checkbox" id="italic"></label>
+        <label>Bold <input type="checkbox" id="bold"></label>
+        <label>Underline <input type="checkbox" id="underline"></label>
+    </form>
+
+    <br>
+
+    <div style="width: 600px; border: solid 2px black; height: 300px;" id="text-box">
+        The quick brown fox jumps over the lazy dog
+    </div>
+</body>
+<script>
+    let selectFont = document.getElementById("font-type");
+    let fontSizeInput = document.getElementById("font-size");
+    let italic = document.getElementById("italic");
+    let bold = document.getElementById("bold");
+    let underline = document.getElementById("underline");
+    let text = document.getElementById("text-box");
+
+    selectFont.addEventListener("change", function () {
+        text.style.fontFamily = selectFont.value;
+    });
+
+    fontSizeInput.addEventListener("change", function () {
+        text.style.fontSize = fontSizeInput.value + "px";
+    });
+
+    italic.addEventListener("change", function () {
+        if (italic.checked)
+            text.style.fontStyle = "italic"
+        else
+            text.style.fontStyle = "normal"
+    });
+
+    bold.addEventListener("change", function () {
+        if (bold.checked)
+            text.style.fontWeight = "bold"
+        else
+            text.style.fontWeight = "normal"
+    });
+
+    underline.addEventListener("change", function () {
+        if (underline.checked)
+            text.style.textDecoration = "underline"
+        else
+            text.style.textDecoration = "none"
+    });
+</script>
+
+</html>
