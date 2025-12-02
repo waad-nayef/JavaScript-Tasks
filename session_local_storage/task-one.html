@@ -15,7 +15,7 @@
         Gender:
         <input type="radio" name="gender" value="Female"> Female
         <input type="radio" name="gender" value="Male"> Male<br>
-        Description: <input type="text" id="description"><br>
+        Description: <textarea id="description"></textarea><br>
         Major & University: <input type="text" id="major"><br>
         Programming Languages:<br>
         <input type="checkbox" name="language" value="JavaScript"> JavaScript<br>
@@ -26,7 +26,7 @@
         <button type="button" onclick="submitData()">Submit</button>
     </form>
 
-    <div id="cards"></div>
+    <div id="card"></div>
 
 </body>
 
@@ -35,7 +35,7 @@
         localStorage.setItem("name", document.getElementById("name").value);
         localStorage.setItem("age", document.getElementById("age").value);
         let gender = document.querySelector('input[name="gender"]:checked');
-        localStorage.setItem("gender", gender ? gender.value : "");
+        localStorage.setItem("gender", gender.value);
         localStorage.setItem("description", document.getElementById("description").value);
         localStorage.setItem("major", document.getElementById("major").value);
 
@@ -46,7 +46,7 @@
             languages += checkboxes[i].value;
         }
 
-        localStorage.setItem("languages", languages.join(", "));
+        localStorage.setItem("languages", languages);
 
         renderData();
     }
@@ -60,7 +60,7 @@
         let languages = localStorage.getItem("languages");
 
         if (name) {
-            document.getElementById("cards").innerHTML = `
+            document.getElementById("card").innerHTML = `
             <div>
                 <h3>${name}</h3>
                 <p>Age: ${age}</p>
@@ -72,7 +72,6 @@
         `;
         }
     }
-
     renderData();
 </script>
 
